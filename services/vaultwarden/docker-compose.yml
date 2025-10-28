@@ -5,6 +5,7 @@ services:
     container_name: vaultwarden
     restart: unless-stopped
     environment:
+      - DOMAIN=http://10.100.0.1:8080
       - SIGNUPS_ALLOWED=true
       - INVITATIONS_ALLOWED=true
       - WEBSOCKET_ENABLED=true
