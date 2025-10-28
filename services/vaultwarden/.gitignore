@@ -1,4 +1,5 @@
 data/
 .env
 *.key
-ssl/key.pem
+*.pem
+ssl/
