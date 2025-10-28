@@ -1,3 +1,4 @@
+version: '3'
 
 services:
   vaultwarden:
@@ -5,9 +6,8 @@ services:
     container_name: vaultwarden
     restart: unless-stopped
     environment:
+      - DOMAIN=https://vault.home.arpa
       - SIGNUPS_ALLOWED=true
-      - INVITATIONS_ALLOWED=true
-      - WEBSOCKET_ENABLED=true
     volumes:
       - ./data:/data
     ports:
