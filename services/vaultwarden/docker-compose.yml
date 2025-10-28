@@ -1,15 +1,15 @@
-
 services:
   vaultwarden:
     image: vaultwarden/server:latest
     container_name: vaultwarden
     restart: unless-stopped
     environment:
-      - DOMAIN=http://10.100.0.1:8080
+      - ROCKET_TLS={certs="/ssl/cert.pem",key="/ssl/key.pem"}
       - SIGNUPS_ALLOWED=true
       - INVITATIONS_ALLOWED=true
       - WEBSOCKET_ENABLED=true
     volumes:
       - ./data:/data
+      - ./ssl:/ssl
     ports:
-      - "8080:80"
+      - "8443:443"
