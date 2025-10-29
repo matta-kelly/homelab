@@ -4,12 +4,17 @@ services:
     container_name: vaultwarden
     restart: unless-stopped
     environment:
-      - ROCKET_TLS={certs="/ssl/cert.pem",key="/ssl/key.pem"}
-      - SIGNUPS_ALLOWED=true
-      - INVITATIONS_ALLOWED=true
-      - WEBSOCKET_ENABLED=true
+      - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED:-true}
+      - INVITATIONS_ALLOWED=${INVITATIONS_ALLOWED:-true}
+      - WEBSOCKET_ENABLED=${WEBSOCKET_ENABLED:-true}
+      - DOMAIN=https://${DOMAIN}
     volumes:
       - ./data:/data
-      - ./ssl:/ssl
-    ports:
-      - "8443:80"
+    networks:
+      - homelab
+    depends_on:
+      - caddy
+
+networks:
+  homelab:
+    external: true

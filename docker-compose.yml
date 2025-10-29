@@ -1,0 +1,18 @@
+services:
+  caddy:
+    extends:
+      file: ./services/caddy/docker-compose.yml
+      service: caddy
+
+  vaultwarden:
+    extends:
+      file: ./services/vaultwarden/docker-compose.yml
+      service: vaultwarden
+
+networks:
+  homelab:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:

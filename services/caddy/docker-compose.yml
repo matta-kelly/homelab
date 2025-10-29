@@ -1,0 +1,29 @@
+services:
+  caddy:
+    image: caddy:2-alpine
+    container_name: caddy
+    restart: unless-stopped
+    environment:
+      - PORKBUN_API_KEY=${PORKBUN_API_KEY}
+      - PORKBUN_SECRET_API_KEY=${PORKBUN_SECRET_API_KEY}
+      - DOMAIN=${DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      - homelab
+    command: caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
+
+networks:
+  homelab:
+    external: true
+
+volumes:
+  caddy_data:
+    external: true
+  caddy_config:
+    external: true

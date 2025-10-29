@@ -1,0 +1,18 @@
+data/
+.env
+*.key
+*.pem
+ssl/
+
+# Vaultwarden data
+services/vaultwarden/data/
+
+# SSL certificates (no longer needed but keep in gitignore)
+services/vaultwarden/ssl/
+
+# Caddy data
+caddy_data/
+caddy_config/
+
+# Logs
+*.log
