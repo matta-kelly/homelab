@@ -1,6 +1,8 @@
 services:
   caddy:
-    image: serfriz/caddy-porkbun-dockerproxy:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: caddy
     restart: unless-stopped
     environment:
