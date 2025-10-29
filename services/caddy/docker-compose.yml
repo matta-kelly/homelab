@@ -1,6 +1,6 @@
 services:
   caddy:
-    image: wbrawner/caddy-porkbun:latest
+    image: serfriz/caddy-porkbun-dockerproxy:latest
     container_name: caddy
     restart: unless-stopped
     environment:
