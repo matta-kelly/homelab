@@ -1,11 +1,11 @@
 services:
   caddy:
-    image: caddy:2-alpine
+    image: wbrawner/caddy-porkbun:latest
     container_name: caddy
     restart: unless-stopped
     environment:
       - PORKBUN_API_KEY=${PORKBUN_API_KEY}
-      - PORKBUN_SECRET_API_KEY=${PORKBUN_SECRET_API_KEY}
+      - PORKBUN_API_SECRET_KEY=${PORKBUN_SECRET_API_KEY}
       - DOMAIN=${DOMAIN}
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
@@ -16,7 +16,6 @@ services:
       - "80:80"
     networks:
       - homelab
-    command: caddy run --config /etc/caddy/Caddyfile --adapter caddyfile
 
 networks:
   homelab:
