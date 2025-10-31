@@ -16,15 +16,9 @@
 
     reverse_proxy vaultwarden:80 {
         header_up X-Real-IP {remote_host}
-        header_up X-Forwarded-For {remote_host}
-        header_up X-Forwarded-Proto {scheme}
     }
 
-    @websocket {
-        header Connection *Upgrade*
-        header Upgrade websocket
-    }
-    reverse_proxy @websocket vaultwarden:3012
+    reverse_proxy /notifications/hub vaultwarden:3012
 
     log {
         output file /data/access.log

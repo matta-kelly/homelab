@@ -1,13 +1,15 @@
 .
 ├── docker-compose.yml
 ├── .env
+├── .env.example
 ├── .gitignore
 ├── README.md
 └── services
     ├── caddy
     │   ├── Caddyfile
     │   ├── data
-    │   └── docker-compose.yml
+    │   ├── docker-compose.yml
+    │   └── Dockerfile
     └── vaultwarden
         ├── data
         │   ├── db.sqlite3
@@ -15,7 +17,6 @@
         │   ├── db.sqlite3-wal
         │   ├── rsa_key.pem
         │   └── tmp
-        ├── docker-compose.yml
-        └── .env.example
+        └── docker-compose.yml
 
-6 directories, 12 files
+6 directories, 13 files
