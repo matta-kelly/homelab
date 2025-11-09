@@ -1,33 +1,30 @@
 services:
   caddy:
-    extends:
-      file: ./services/caddy/docker-compose.yml
-      service: caddy
-
-  vaultwarden:
-    extends:
-      file: ./services/vaultwarden/docker-compose.yml
-      service: vaultwarden
-
-  immich:
-    extends:
-      file: ./services/immich/docker-compose.yml
-      service: immich
-
-  immich-postgres:
-    extends:
-      file: ./services/immich/docker-compose.yml
-      service: immich-postgres
-
-  immich-redis:
-    extends:
-      file: ./services/immich/docker-compose.yml
-      service: immich-redis
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: caddy
+    restart: unless-stopped
+    environment:
+      - PORKBUN_API_KEY=${PORKBUN_API_KEY}
+      - PORKBUN_API_SECRET_KEY=${PORKBUN_SECRET_API_KEY}
+      - DOMAIN=${DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    ports:
+      - "443:443"
+      - "80:80"
+    networks:
+      - homelab
 
 networks:
   homelab:
-    driver: bridge
+    external: true
 
 volumes:
   caddy_data:
+    external: true
   caddy_config:
+    external: true
