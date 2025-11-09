@@ -6,7 +6,7 @@
     }
 }
 
-{$DOMAIN} {
+vaultwarden.datamountainsolutions.com {
     tls {
         dns porkbun {
             api_key {env.PORKBUN_API_KEY}
@@ -22,5 +22,20 @@
 
     log {
         output file /data/access.log
+    }
+}
+
+photos.datamountainsolutions.com {
+    tls {
+        dns porkbun {
+            api_key {env.PORKBUN_API_KEY}
+            api_secret_key {env.PORKBUN_API_SECRET_KEY}
+        }
+    }
+
+    reverse_proxy immich:3001
+
+    log {
+        output file /data/photos-access.log
     }
 }

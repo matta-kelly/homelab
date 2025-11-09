@@ -10,6 +10,8 @@
     │   ├── data
     │   ├── docker-compose.yml
     │   └── Dockerfile
+    ├── immich
+    │   └── docker-compose.yml
     └── vaultwarden
         ├── data
         │   ├── db.sqlite3
@@ -19,4 +21,4 @@
         │   └── tmp
         └── docker-compose.yml
 
-6 directories, 13 files
+7 directories, 14 files

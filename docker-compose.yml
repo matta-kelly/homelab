@@ -9,6 +9,26 @@ services:
       file: ./services/vaultwarden/docker-compose.yml
       service: vaultwarden
 
+  immich-server:
+    extends:
+      file: ./services/immich/docker-compose.yml
+      service: immich-server
+
+  immich-machine-learning:
+    extends:
+      file: ./services/immich/docker-compose.yml
+      service: immich-machine-learning
+
+  immich-postgres:
+    extends:
+      file: ./services/immich/docker-compose.yml
+      service: immich-postgres
+
+  immich-redis:
+    extends:
+      file: ./services/immich/docker-compose.yml
+      service: immich-redis
+
 networks:
   homelab:
     driver: bridge
@@ -16,3 +36,4 @@ networks:
 volumes:
   caddy_data:
   caddy_config:
+  immich-model-cache:

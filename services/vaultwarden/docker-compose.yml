@@ -7,15 +7,13 @@ services:
       - SIGNUPS_ALLOWED=${SIGNUPS_ALLOWED:-true}
       - INVITATIONS_ALLOWED=${INVITATIONS_ALLOWED:-true}
       - WEBSOCKET_ENABLED=${WEBSOCKET_ENABLED:-true}
-      - DOMAIN=https://${DOMAIN}
+      - DOMAIN=https://vaultwarden.datamountainsolutions.com
     volumes:
       - ./data:/data
     ports:
       - "3012:3012"
     networks:
       - homelab
-    depends_on:
-      - caddy
 
 networks:
   homelab:
