@@ -33,7 +33,7 @@ photos.datamountainsolutions.com {
         }
     }
 
-    reverse_proxy immich:3001
+    reverse_proxy immich-server:3001
 
     log {
         output file /data/photos-access.log
