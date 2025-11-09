@@ -6,7 +6,7 @@
     }
 }
 
-vaultwarden.datamountainsolutions.com {
+vaultwarden.datamountainsolutions.com, photos.datamountainsolutions.com {
     tls {
         dns porkbun {
             api_key {env.PORKBUN_API_KEY}
@@ -14,28 +14,20 @@ vaultwarden.datamountainsolutions.com {
         }
     }
 
-    reverse_proxy vaultwarden:80 {
-        header_up X-Real-IP {remote_host}
+    @vaultwarden host vaultwarden.datamountainsolutions.com
+    handle @vaultwarden {
+        reverse_proxy vaultwarden:80 {
+            header_up X-Real-IP {remote_host}
+        }
+        reverse_proxy /notifications/hub vaultwarden:3012
     }
 
-    reverse_proxy /notifications/hub vaultwarden:3012
+    @photos host photos.datamountainsolutions.com
+    handle @photos {
+        reverse_proxy immich-server:3001
+    }
 
     log {
         output file /data/access.log
-    }
-}
-
-photos.datamountainsolutions.com {
-    tls {
-        dns porkbun {
-            api_key {env.PORKBUN_API_KEY}
-            api_secret_key {env.PORKBUN_API_SECRET_KEY}
-        }
-    }
-
-    reverse_proxy immich-server:3001
-
-    log {
-        output file /data/photos-access.log
     }
 }
