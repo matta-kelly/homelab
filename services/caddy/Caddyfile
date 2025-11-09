@@ -24,7 +24,7 @@ vaultwarden.datamountainsolutions.com, photos.datamountainsolutions.com {
 
     @photos host photos.datamountainsolutions.com
     handle @photos {
-        reverse_proxy immich-server:3001
+        reverse_proxy immich-server:2283
     }
 
     log {
