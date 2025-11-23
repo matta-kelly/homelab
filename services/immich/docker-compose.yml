@@ -10,7 +10,7 @@ services:
       - DB_DATABASE_NAME=immich
       - REDIS_HOSTNAME=immich-redis
     volumes:
-      - ${UPLOAD_LOCATION:-./library}:/usr/src/app/upload
+      - ${BULK_STORAGE}/immich/library:/usr/src/app/upload
       - /etc/localtime:/etc/localtime:ro
     networks:
       - homelab
@@ -36,7 +36,7 @@ services:
       - POSTGRES_PASSWORD=${IMMICH_DB_PASSWORD}
       - POSTGRES_DB=immich
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - ${BULK_STORAGE}/immich/postgres:/var/lib/postgresql/data
     networks:
       - homelab
 

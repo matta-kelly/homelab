@@ -9,7 +9,7 @@ services:
       - WEBSOCKET_ENABLED=${WEBSOCKET_ENABLED:-true}
       - DOMAIN=https://vaultwarden.datamountainsolutions.com
     volumes:
-      - ./data:/data
+      - ${FAST_STORAGE}/vaultwarden:/data
     ports:
       - "3012:3012"
     networks:
