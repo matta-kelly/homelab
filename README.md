@@ -4,8 +4,9 @@ Self-hosted services running on home server with WireGuard VPN.
 
 ## Services
 
+- **Caddy**: Reverse Proxy
 - **Vaultwarden**: Self-hosted password manager
-- More coming soon...
+- **Immich**: Photo cloud
 
 ## Setup
 
